@@ -6,23 +6,36 @@ REGLA_1 = []
 REGLA_2 = []
 
 for i in range(0,12):
-    A = [MD1[i], ">", MI1[i] , "Y" , MI1[(i+4)%12] , "Y" , MI1[(i+7)%12]]
+    A = ["(",MD1[i], ">","(", MI1[i] , "Y" , MI1[(i+4)%12] , "Y" , MI1[(i+7)%12]]
+    #A = "(" + MD1[i]+ ">"+"(" + MI1[i] + "Y" + MI1[(i+4)%12] + "Y" + MI1[(i+7)%12]
     for j in MD1:
         if j != MD1[i]:
             A.append("Y")
+            #A+= "Y"
             A.append("-")
+            #A+= "-"
             A.append(j)
+            #A+= j
+    A.append(")")
+    A.append(")")
     REGLA_1.append(A)
 
+
 for i in range(0,12):
-    B = [MD1[i],">", MI2[(i+5)%12], "Y", MI2[(i+9)%12], "Y", MI2[(i+12)%12]]
+    #B = [MD1[i],">", MI2[(i+5)%12], "Y", MI2[(i+9)%12], "Y", MI2[(i+12)%12]]
+    B = MD1[i]+">"+ MI2[(i+5)%12]+ "Y"+ MI2[(i+9)%12]+ "Y"+ MI2[(i+12)%12]
     for j in MD2:
         if j != MD2[i]:
-            B.append("Y")
-            B.append("-")
-            B.append(j)
+            #B.append("Y")
+            B+= "Y"
+            #B.append("-")
+            B+= "-"
+            #B.append(j)
+            B+= j
     REGLA_2.append(B)
 
 
-for S in REGLA_2:
+for S in REGLA_1:
     print(S)
+    print(len(S))
+    print("\n")

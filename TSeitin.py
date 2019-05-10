@@ -1,6 +1,6 @@
-LetrasProposicionalesA =['p','q','r']
+LetrasProposicionalesA =['C','E','G','H']
 LetrasProposicionalesB =[]
-A = "((pYq)>-r)"
+A = "(C>((CYE)Y(GYH)))"
 for i in range(1,101):
     LetrasProposicionalesB.append("x"+str(i))
 
