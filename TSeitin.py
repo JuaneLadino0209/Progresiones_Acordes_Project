@@ -1,6 +1,6 @@
 LetrasProposicionalesA =['A','A#','B','C','C#','D','D#','E','F','F#','G','G#','A!','A#!','B!','C!','C#!','D!','D#!','E!','F!','F#!','G!','G#!','A1','A1#','B1','C1','C1#','D1','D1#','E1','F1','F1#','G1','G1#','A2','A2#','B2','C2','C2#','D2','D2#','E2','F2','F2#','G2','G2#']
 LetrasProposicionalesB =[]
-A = "(A>((AYB)YC))"
+A = ['(','A#!','>','(','(','-','A#','Y','-','B',')','Y','-','C#!',')',')']
 for i in range(1,600):
     LetrasProposicionalesB.append("x"+str(i))
 
@@ -15,8 +15,8 @@ while len(A) > 0:
         ATOMO = LetrasProposicionalesB[I]
         Pila = Pila[:-1]
         Pila.append(ATOMO)
-        #K =[ATOMO,"=","-",S]
-        L.append(ATOMO+"=-"+S)
+        K =[ATOMO,"=","-",S]
+        L.append(K)
         A = A[1:]
         if len(A)>0:
             S = A[0]
@@ -27,8 +27,8 @@ while len(A) > 0:
         Pila = Pila[:len(Pila)-4]
         I += 1
         ATOMO = LetrasProposicionalesB[I]
-        #z = [ATOMO,"=",V,O,W]
-        L.append(ATOMO+"="+V+O+W)
+        z = [ATOMO,"=",V,O,W]
+        L.append(z)
         S = ATOMO
     else:
         Pila.append(S)
