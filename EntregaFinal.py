@@ -61,7 +61,7 @@ def unitPropagate(S,I):
 		for i in S:
 			S=removeCl(S,i)
 			S=removeComp(S,i)
-			if(len(i)==0): return 'pailas',I
+			if(len(i)==0): return 'Error',I
 			if(i[0] == '-'):
 				I[Complemento(i[0])] = 0
 			else:
@@ -82,7 +82,7 @@ def literalDicc(D):
 
 def DPLL(S,I):
 	S,I=unitPropagate(S,I)
-	if(S == 'pailas'): return 'Insatisfacible' , '{}'
+	if(S == 'Error'): return 'Insatisfacible' , '{}'
 	if(len(S) == 0):
 		return 'Satisfacible' , literalDicc(I)
 	for i in S:
@@ -179,9 +179,6 @@ def polacoInverso(polaco, referencia):
                 return polacoInverso(polaco, referencia+1) + polaco[referencia]
 
 def Inorder(f):
-    # Imprime una formula como cadena dada una formula como arbol
-    # Input: tree, que es una formula de logica proposicional
-    # Output: string de la formula
 
     if f.right == None:
         return f.label
@@ -191,9 +188,7 @@ def Inorder(f):
         return "(" + Inorder(f.left) + f.label + Inorder(f.right) + ")"
 
 def QuitarDobleNegacion(f):
-    # Elimina las dobles negaciones en una formula como arbol
-    # Input: tree, que es una formula de logica proposicional
-    # Output: tree sin dobles negaciones
+
     if f.right == None:
         return f
     elif f.label == '-':
@@ -205,9 +200,7 @@ def QuitarDobleNegacion(f):
         return Tree(f.label, QuitarDobleNegacion(f.left), QuitarDobleNegacion(f.right))
 
 def FormaNormal(f):
-    # Devuelve las equivalencias en forma normal conjuntiva de las expresiones en las transformaciones de Tseitin
-    # Input: tree, que es una formula de logica proposicional
-    # Output: Forma normal conjuntiva como cadena de caracteres
+
     p = f.left.label
     if f.right.label == '-':
         q = f.right.right.label
@@ -222,10 +215,7 @@ def FormaNormal(f):
         return '('+q+'O'+p+')Y(-'+r+'O'+p+')Y(-'+q+'O'+r+'O-'+p+')'
 
 def Tseitin(f, letrasProposicionales):
-    # Halla la forma normal conjuntiva de una formula usando la transformacion de Tseitin
-    # Input: tree f, lista de strings letrasProposicionales
-    # Output: Forma normal conjuntiva como cadena de caracteres
-    #f = QuitarDobleNegacion(f)
+
     A = Inorder(f)
     letrasProposicionalesB = ['x'+str(i) for i in range(1,700)]
     L = []
@@ -268,9 +258,7 @@ def Tseitin(f, letrasProposicionales):
     return B
 
 def Clausula(C):
-    # Transforma una clausula en forma de string a una lista de literales
-    # Input: String C
-    # Output: Clausula como lista de caracteres
+
     L = []
     s = C[0]
     literal = ''
@@ -291,9 +279,7 @@ def Clausula(C):
     return L
 
 def FormaClausal(A):
-    # Obtiene la forma clausal de una formula en FNC
-    # Input: A, que es una formula de logica proposicional en FNC en forma de cadena de caracteres
-    # Output: lista de clausulas
+
     L = []
     i = 0
     while len(A) > 0:
@@ -306,7 +292,7 @@ def FormaClausal(A):
     return L
 
 def String2Tree(A, LetrasProposicionales):
-#A = Lista de caracteres con una formula escrita en notacion polaca inversa
+    
     Conectivos = ['O','Y','>']
     Pila = []
     for c in A:
