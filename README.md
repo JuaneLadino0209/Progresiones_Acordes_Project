@@ -1,2 +1,2 @@
-# Proyecto_LCC_JuanLadino_SebastianMartinez
+# Progresion_Acordes_Project
 Proyecto Final Logica para ciencias de la computacion
